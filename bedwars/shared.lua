@@ -12,6 +12,7 @@ local tab = {
 		if plr.Character.Humanoid.Health < 1 then return false end
 		return true
 	end,
+	scriptActive = false,
 }
 
 shared.Functions = tab
