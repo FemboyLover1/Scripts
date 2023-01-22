@@ -1,4 +1,4 @@
-local path = PUT YOUR SCRIPT HERE
+local path = PUT YOUR PATH HERE
 local function log()
     local returndata = nil
     for i,v in pairs(path:GetDescendants()) do
