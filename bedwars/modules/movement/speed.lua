@@ -29,3 +29,4 @@ while _G.Speedddd11 do
 				end
 				wait(0.57)
 			end
+--speed off _G.Speedddd11 = false -- lplr.Character.Humanoid.WalkSpeed = 16
