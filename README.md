@@ -1,2 +1,2 @@
 # Scripts
-stuff
+funny scripter lmao
