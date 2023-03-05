@@ -99,15 +99,15 @@ knitRecieved, knit = pcall(function()
 end)
 local lplr = game.Players.LocalPlayer
 local events = {
-	HangGliderController = knit.Controllers["HangGliderController"],
+	--HangGliderController = knit.Controllers["HangGliderController"],
 	SprintController = knit.Controllers["SprintController"],
-	JadeHammerController = knit.Controllers["JadeHammerController"],
-	PictureModeController = knit.Controllers["PictureModeController"],
-	SwordController = knit.Controllers["SwordController"],
+	--JadeHammerController = knit.Controllers["JadeHammerController"],
+	--PictureModeController = knit.Controllers["PictureModeController"],
+	--SwordController = knit.Controllers["SwordController"],
 	--GroundHit = game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.GroundHit,
-	Reach = require(game:GetService("ReplicatedStorage").TS.combat["combat-constant"]),
-	Knockback = debug.getupvalue(require(game:GetService("ReplicatedStorage").TS.damage["knockback-util"]).KnockbackUtil.calculateKnockbackVelocity, 1),
-	report = knit.Controllers["report-controller"]
+	--Reach = require(game:GetService("ReplicatedStorage").TS.combat["combat-constant"]),
+	--Knockback = debug.getupvalue(require(game:GetService("ReplicatedStorage").TS.damage["knockback-util"]).KnockbackUtil.calculateKnockbackVelocity, 1),
+	--report = knit.Controllers["report-controller"]
 }
 
 -- [[ {{ --Examples -- }} ]] --
