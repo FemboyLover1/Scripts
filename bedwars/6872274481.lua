@@ -1,7 +1,7 @@
 --[[
     Credits:
     Hazelware - Table - Spoofing camera on longfly
-    Kitty9 - litteraly everything else :shrug:
+    Springs67 - litteraly everything else :shrug:
 ]]
 
 -- [[ {{ -- ArrayList -- }} ]] --
