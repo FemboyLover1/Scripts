@@ -1,6 +1,6 @@
 --[[
     Credits:
-    Hazelware - Table - Spoofing camera on longfly
+    Hazelware - Table - Spoofing camera on longfly -- adding longfly soon
     Springs67 - litteraly everything else :shrug:
 ]]
 
