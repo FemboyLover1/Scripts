@@ -182,32 +182,6 @@ runcode(function()
 end)
 
 runcode(function()
-    local InstakillRepeat = false
-    CombatSection:NewToggle("Instakill", "ded", function(state)
-		if state then
-			MakeModule("Instakill - {Pyro}")
-            InstakillRepeat = true
-			runcode(function()
-				repeat task.wait()
-					for i,v in pairs(game.Players:GetPlayers()) do
-						if (v.Character) and (game.Players.LocalPlayer.Character) and v ~= game.Players.LocalPlayer then
-							runcode(function()
-								if (v.Character.PrimaryPart.Position - lplr.Character.PrimaryPart.Position).Magnitude < 12 and v.Character.Humanoid.health > 1 and lplr.Character.Humanoid.Health > 1 and v.Team ~= lplr.Team then
-									game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.UseFlamethrower:InvokeServer()
-								end
-							end)
-						end
-					end
-				until not InstakillRepeat
-			end)
-		else
-			RemoveModule("Instakill")
-			InstakillRepeat = false
-		end
-	end)
-end)
-
-runcode(function()
 	CombatSection:NewToggle("AntiKb", "allows for no knockback", function(state)
 		if state then
 			MakeModule("AntiKb")
