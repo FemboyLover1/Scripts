@@ -1,11 +1,24 @@
 --[[
     Credits:
-    Hazelware - Table - Spoofing camera on longfly -- adding longfly soon
-    Springs67 - litteraly everything else :shrug:
+    Hazelware - Table - Spoofing camera on longfly
+    Spring67 - litteraly everything else :shrug:
 ]]
 
 -- [[ {{ -- ArrayList -- }} ]] --
-local ScreenGui = Instance.new("ScreenGui") local InvisFrame = Instance.new("Frame") local UIListLayout = Instance.new("UIListLayout") local Logo = Instance.new("TextLabel") ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling ScreenGui.ResetOnSpawn = false InvisFrame.Name = "InvisFrame" InvisFrame.Parent = ScreenGui InvisFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255) InvisFrame.BackgroundTransparency = 1.000 InvisFrame.Position = UDim2.new(0.0193850268, 0, 0.357855439, 0) InvisFrame.Size = UDim2.new(0, 245, 0, 446) UIListLayout.Parent = InvisFrame
+local ScreenGui = Instance.new("ScreenGui")
+local InvisFrame = Instance.new("Frame")
+local UIListLayout = Instance.new("UIListLayout")
+local Logo = Instance.new("TextLabel")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+InvisFrame.Name = "InvisFrame"
+InvisFrame.Parent = ScreenGui
+InvisFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+InvisFrame.BackgroundTransparency = 1.000
+InvisFrame.Position = UDim2.new(0.0193850268, 0, 0.357855439, 0)
+InvisFrame.Size = UDim2.new(0, 245, 0, 446)
+UIListLayout.Parent = InvisFrame
 UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
 Logo.Name = "Logo"
 Logo.Parent = ScreenGui
@@ -334,6 +347,61 @@ runcode(function()
 		end
 	end)
 end)
+
+--[[
+runcode(function() -- bad code and wont work well
+    local RbgEnabled = false
+    local ColorLoop = false
+	RenderSection:NewToggle("RgbSword", "very gay :D", function(state)
+		if state then
+			MakeModule("RgbSword")
+            RbgEnabled = true
+            ColorLoop = true
+            repeat
+                for i,v in pairs(game:GetService("Workspace").Camera:GetDescendants()) do
+                    if v.Name == "Handle" then
+                        v.TextureID = ""
+                        v.Material = Enum.Material.Neon
+                        if v.Transparency == 0 then
+                        else
+                            v.Transparency = 0
+                            local function ColoRRepeat()
+                                repeat task.wait()
+                                    v.Color = Color3.fromRGB(22, 185, 63)
+                                    wait(0.1)
+                                    v.Color = Color3.fromRGB(44, 255, 237)
+                                    wait(0.1)
+                                    v.Color = Color3.fromRGB(38, 42, 255)
+                                    wait(0.1)
+                                    v.Color = Color3.fromRGB(240, 34, 255)
+                                    wait(0.1)
+                                    v.Color = Color3.fromRGB(220, 20, 23)
+                                    wait(0.1)
+                                    v.Color = Color3.fromRGB(226, 108, 29)
+                                    wait(0.1)
+                                    v.Color = Color3.fromRGB(255, 247, 12)
+                                until not RbgEnabled
+                            end
+                            coroutine.wrap(ColoRRepeat)()
+                        end
+                    end
+                end
+                task.wait(5)
+            until not ColorLoop
+		else
+			ColorLoop = false
+            RbgEnabled = false
+            for i,v in pairs(game:GetService("Workspace").Camera:GetDescendants()) do
+                if v.Name == "Handle" then
+                    v.Transparency = 0
+                    v.TextureID = "rbxassetid://6770060739"
+                end
+            end
+			RemoveModule("RgbSword")
+		end
+	end)
+end)
+--]]
 
 runcode(function()
 	RenderSection:NewKeybind("ToggleUi", "ToggleUi", Enum.KeyCode.RightShift, function()
