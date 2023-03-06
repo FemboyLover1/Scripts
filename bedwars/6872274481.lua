@@ -179,6 +179,7 @@ runcode(function()
 		end
 	end)
 end)
+--[[
 runcode(function()
     local InstakillRepeat = false
     CombatSection:NewToggle("Instakill", "ded", function(state)
@@ -203,7 +204,7 @@ runcode(function()
 			InstakillRepeat = false
 		end
 	end)
-end)
+end)]]
 runcode(function()
 	CombatSection:NewToggle("AntiKb", "allows for no knockback", function(state)
 		if state then
