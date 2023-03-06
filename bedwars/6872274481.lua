@@ -152,7 +152,6 @@ runcode(function()
 	--Hazelware rotation (ty :D)
 	local AuraEnabled = false
 	local AuraRange = 18
-
 	CombatSection:NewToggle("Aura", "aura momento", function(state)
 		if state then
 			MakeModule("Aura - {18}")
@@ -180,7 +179,31 @@ runcode(function()
 		end
 	end)
 end)
-
+runcode(function()
+    local InstakillRepeat = false
+    CombatSection:NewToggle("Instakill", "ded", function(state)
+		if state then
+			MakeModule("Instakill - {Pyro}")
+            InstakillRepeat = true
+			runcode(function()
+				repeat task.wait()
+					for i,v in pairs(game.Players:GetPlayers()) do
+						if (v.Character) and (game.Players.LocalPlayer.Character) and v ~= game.Players.LocalPlayer then
+							runcode(function()
+								if (v.Character.PrimaryPart.Position - lplr.Character.PrimaryPart.Position).Magnitude < 12 and v.Character.Humanoid.health > 1 and lplr.Character.Humanoid.Health > 1 and v.Team ~= lplr.Team then
+									game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.UseFlamethrower:InvokeServer()
+								end
+							end)
+						end
+					end
+				until not InstakillRepeat
+			end)
+		else
+			RemoveModule("Instakill")
+			InstakillRepeat = false
+		end
+	end)
+end)
 runcode(function()
 	CombatSection:NewToggle("AntiKb", "allows for no knockback", function(state)
 		if state then
@@ -194,7 +217,6 @@ runcode(function()
 		end
 	end)
 end)
-
 runcode(function()
 	CombatSection:NewToggle("Reach", "higher reach than legits ez momento", function(state)
 		if state then
@@ -206,7 +228,6 @@ runcode(function()
 		end
 	end)
 end)
-
 runcode(function()
 	local RepeatSprint = false
 	CombatSection:NewToggle("AutoSprint", "makes u sprint automatically", function(state)
@@ -222,7 +243,6 @@ runcode(function()
 		end
 	end)
 end)
-
 runcode(function()
     local UIS = game:GetService("UserInputService")
     local You = game.Players.LocalPlayer.Name
@@ -233,16 +253,16 @@ runcode(function()
             SpeedOn = true
             repeat task.wait()
 				if UIS:IsKeyDown(Enum.KeyCode.W) then
-					game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,-0.05)
+					game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,-0.03)
 				end;
 				if UIS:IsKeyDown(Enum.KeyCode.A) then
-					game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(-0.05,0,0)
+					game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(-0.03,0,0)
 				end;
 				if UIS:IsKeyDown(Enum.KeyCode.S) then
-					game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,0.05)
+					game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,0.03)
 				end;
 				if UIS:IsKeyDown(Enum.KeyCode.D) then
-					game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0.05,0,0)
+					game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0.03,0,0)
 				end;
             until not SpeedOn
 		else
@@ -251,7 +271,6 @@ runcode(function()
 		end
 	end)
 end)
-
 runcode(function()
     MovementSection:NewKeybind("FunnyHighjump", "makes u jump VERY high lul", Enum.KeyCode.H, function()
         pcall(function()
@@ -265,7 +284,6 @@ runcode(function()
         end)
     end)
 end)
-
 runcode(function()
     MovementSection:NewKeybind("Flight", "makes u jump VERY high lul", Enum.KeyCode.R, function()
         pcall(function()
@@ -277,7 +295,6 @@ runcode(function()
         end)
     end)
 end)
-
 runcode(function()
 	RenderSection:NewToggle("Chams", "see people through walls", function(state)
 		if state then
@@ -301,7 +318,6 @@ runcode(function()
 		end
 	end)
 end)
-
 runcode(function()
 	RenderSection:NewToggle("FemboyAmbient", "'My favorite module', -Spring67#2760", function(state)
 		if state then
@@ -321,7 +337,6 @@ runcode(function()
 		end
 	end)
 end)
-
 --[[
 runcode(function() -- bad code and wont work well
     local RbgEnabled = false
@@ -376,13 +391,11 @@ runcode(function() -- bad code and wont work well
 	end)
 end)
 --]]
-
 runcode(function()
 	RenderSection:NewKeybind("ToggleUi", "ToggleUi", Enum.KeyCode.RightShift, function()
 		Library:ToggleUI()
 	end)
 end)
-
 runcode(function()
 	PlayerSection:NewButton("Antivoid", "no falling into void :scream:", function()
 		MakeModule("Antivoid")
@@ -397,7 +410,6 @@ runcode(function()
 		NewAntivoidPart.BrickColor = BrickColor.new("Royal purple")
 	end)
 end)
-
 runcode(function()
 	PlayerSection:NewTextBox("ChatBypasser", "allows u to bypass chat filter", function(msg)
 		if msg == "fuck" then
@@ -415,7 +427,6 @@ runcode(function()
         end
 	end)
 end)
-
 runcode(function()
     local SpammerEnabled = false
     PlayerSection:NewToggle("ChatSpammer", "chat spams every 5 seconds", function(state)
@@ -427,7 +438,6 @@ runcode(function()
 			RemoveModule("ChatSpammer")
 		end
 	end)
-
     PlayerSection:NewTextBox("ChatSpammer", "choose message being sent", function(msg)
         repeat
             Chat(msg)
@@ -435,12 +445,34 @@ runcode(function()
         until not SpammerEnabled
     end)
 end)
-
 runcode(function()
     PlayerSection:NewButton("NoFall", "yes no fall damage", function()
         MakeModule("NoFall - {Remote}")
 		repeat task.wait()
             events["GroundHit"]:FireServer()
         until not true
+	end)
+end)
+runcode(function()
+	local crasherenabled = false
+	MiscSection:NewToggle("GameLagger", "lags the game for everyone else, REQUIRES infernal", function(state)
+		if state then
+			MakeModule("GameLagger")
+			crasherenabled = true
+			repeat 
+				for i=1, 2 do
+					local args = {
+						[1] = {
+							["raised"] = true
+						}
+					}
+					game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.UseInfernalShield:FireServer(unpack(args))
+				end
+				task.wait()
+			until not crasherenabled
+		else
+			crasherenabled = false
+			RemoveModule("GameLagger")
+		end
 	end)
 end)
